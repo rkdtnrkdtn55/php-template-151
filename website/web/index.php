@@ -1,23 +1,45 @@
 <?php
 
-error_reporting(E_ALL);
 
+use rkdtnrkdtn55\Factory;
+
+error_reporting(E_ALL);
 require_once("../vendor/autoload.php");
-$tmpl = new rkdtnrkdtn55\SimpleTemplateEngine(__DIR__ . "/../templates/");
+$conf = parse_ini_file(__DIR__ . "/../config.ini", true);
+
+
+$factory = new Factory($conf);
+
 
 switch($_SERVER["REQUEST_URI"]) {
 	case "/":
-		(new ihrname\Controller\IndexController($tmpl))->homepage();
+		$factory->getIndexController()->homepage();
 		break;
-	case "/Login":
-		(new rkdtnrkdtn55\Controller\LoginController($tmpl))->showLogin();
+	case "/login":
+		$ctr =  $factory->getLoginController();
+		if($_SERVER["REQUEST_METHOD"] == "GET"){
+			$ctr->showlogin();
+		}
+		else {
+			$ctr->login($_POST);
+		}
 		break;
-		echo"Test";
+	case "/post":
+		$factory->getIndexController()->showPost();
+		break;
+	case "/postmanage":
+		$factory->getIndexController()->showPostManage();
+		break;
+	case "/logouttap":
+			$factory->getIndexController()->showlogouttap();
+		break;
+	case "/logout":
+			$factory->getLoginController()->logout();
 		break;
 	default:
 		$matches = [];
 		if(preg_match("|^/hello/(.+)$|", $_SERVER["REQUEST_URI"], $matches)) {
-			(new ihrname\Controller\IndexController($tmpl))->greet($matches[1]);
+			$factory->getIndexController()->greet($matches[1]);
 			break;
 		}
 		echo "Not Found";

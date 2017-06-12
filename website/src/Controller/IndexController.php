@@ -20,10 +20,19 @@ class IndexController
   }
 
   public function homepage() {
-    echo "INDEX";
+  	echo $this->template->render("main.html.php");
   }
 
   public function greet($name) {
-  	echo $this->template->render("hello.html.php", ["name" => $name]);
+  	//echo $this->template->render("hello.html.php", ["name" => $name]);
+  }
+  public function showPostManage(){
+  	echo $this->template->render("Postmanage.html.php");
+  }
+  public function showPost(){
+  	echo $this->template->render("Post.html.php");
+  }
+  public function showlogouttap(){
+  	echo $this->template->render("Logouttap.html.php");
   }
 }
