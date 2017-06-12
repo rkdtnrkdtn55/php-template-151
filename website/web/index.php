@@ -3,14 +3,14 @@
 error_reporting(E_ALL);
 
 require_once("../vendor/autoload.php");
-$tmpl = new ihrname\SimpleTemplateEngine(__DIR__ . "/../templates/");
+$tmpl = new rkdtnrkdtn55\SimpleTemplateEngine(__DIR__ . "/../templates/");
 
 switch($_SERVER["REQUEST_URI"]) {
 	case "/":
 		(new ihrname\Controller\IndexController($tmpl))->homepage();
 		break;
 	case "/Login":
-		(new ihrname\Controller\LoginController($tmpl))->showLogin();
+		(new rkdtnrkdtn55\Controller\LoginController($tmpl))->showLogin();
 		break;
 		echo"Test";
 		break;
