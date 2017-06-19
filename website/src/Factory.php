@@ -17,6 +17,10 @@ class Factory
 		return new Controller\IndexController($this->getTemplateEngine());
 	}
 	
+	public function getFileController(){
+		return new Controller\FileController($this->getTemplateEngine(), $this->getFileService());
+	}
+	
 	public function getLoginController()
 	{
 		return new LoginController($this->getTemplateEngine(), $this->getLoginService());
@@ -46,6 +50,9 @@ class Factory
 		return new Service\LoginmysqlService(
 			$this->getPdo()
 		);
+	}
+	public function getFileService(){
+		return new Service\FilemysqlService($this->getPdo());
 	}
 }
 ?>

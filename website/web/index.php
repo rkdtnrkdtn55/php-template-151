@@ -7,6 +7,7 @@ error_reporting(E_ALL);
 require_once("../vendor/autoload.php");
 $conf = parse_ini_file(__DIR__ . "/../config.ini", true);
 
+session_start();
 
 $factory = new Factory($conf);
 
@@ -25,10 +26,13 @@ switch($_SERVER["REQUEST_URI"]) {
 		}
 		break;
 	case "/post":
-		$factory->getIndexController()->showPost();
-		break;
-	case "/postmanage":
-		$factory->getIndexController()->showPostManage();
+		$ctr = $factory->getFileController();
+		if($_SERVER["REQUEST_METHOD"] == "GET"){
+			$ctr->showPost();
+		}
+		else {
+			$ctr->saveFile($_FILES, $_POST);
+		}
 		break;
 	case "/logouttap":
 			$factory->getIndexController()->showlogouttap();
@@ -40,6 +44,10 @@ switch($_SERVER["REQUEST_URI"]) {
 		$matches = [];
 		if(preg_match("|^/hello/(.+)$|", $_SERVER["REQUEST_URI"], $matches)) {
 			$factory->getIndexController()->greet($matches[1]);
+			break;
+		}
+		if(preg_match("|^/postmanage/(\d+)$|", $_SERVER["REQUEST_URI"], $matches)) {
+			$factory->getFileController()->showPostManage($matches[1]);
 			break;
 		}
 		echo "Not Found";

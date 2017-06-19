@@ -21,6 +21,7 @@
             <p id="Subject">I hope see you again</p>
         </div>
         <div id="Footer">GIBZ-Module 151-Kangsoo Lee   2017 </div>
+        <div id="Footer2"><?php echo "Welcome :       "  . $_SESSION["email"];?></div>
     </div>
 </body>
 </html>

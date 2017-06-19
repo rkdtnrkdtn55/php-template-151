@@ -12,15 +12,14 @@
         </div>
 		<?php include __DIR__ . "/navigation.html.php"; ?>
         <div id="Content">
-            <form action="/action_page.php">
+            <form method="POST" enctype="multipart/form-data">
                <input id="post" type="Text" name="Post" />
   					<input type="file" name="img">
   					<input type="submit" value="Upload">
-  					<input type="submit" value="Finish" />
-				</form> 
+			</form> 
         </div>
         <div id="Footer">GIBZ-Module 151-Kangsoo Lee   2017</div>
-        <div id="Footer2"><?php echo "HI" . $_SESSION["email"];?></div>
+        <div id="Footer2"><?php echo "Welcome :    "  . $_SESSION["email"];?></div>
     </div>
 </body>
 </html>

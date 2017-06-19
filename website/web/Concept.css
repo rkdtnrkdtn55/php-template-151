@@ -67,12 +67,12 @@ ul.navigation a:hover {
 #Footer2 {
     clear : both;
     border-top : 1px solid black;
-    font-size : 10px;
+    font-size : 20px;
     color : white;
-    font-weight : bold;
-    text-align : center;
-    height : 20px;
+    text-align : left;
+    height : 30px;
     padding : 0px;
+    font-family : Minion, Arial;
 }
 #Content {
    float : left;
@@ -112,5 +112,11 @@ ul.navigation a:hover {
 	width : 700px;
     min-height : 500px;
 	
+}
+#picture {
+	width : 500px;
+}
+#button {
+	float : right;
 }
 
