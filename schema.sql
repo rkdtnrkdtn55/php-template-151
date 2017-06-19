@@ -16,3 +16,14 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `email`, `password`) VALUES
 (1,	'rkdtnrkdtn55@gmail.com',	'123456');
+
+DROP TABLE IF EXISTS `File`;
+CREATE TABLE `File` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Filename` varchar(255) NOT NULL,
+  `Type` varchar(255) NOT NULL,
+  `Size` int(11) NOT NULL,
+  `Content` longblob NOT NULL,
+  `Message` varchar(255) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

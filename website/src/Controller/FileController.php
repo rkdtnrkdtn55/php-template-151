@@ -21,6 +21,14 @@ class FileController
      $this->template = $template;
      $this->fileService = $fileService;
   }
+  
+  public function listPost()
+  {
+  	
+  	echo $this->template->render("PostmanageList.html.php", [
+  		"posts" => $this->fileService->list()
+  	]);
+  }
 
   public function showPostManage($id){
 

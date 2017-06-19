@@ -40,6 +40,9 @@ switch($_SERVER["REQUEST_URI"]) {
 	case "/logout":
 			$factory->getLoginController()->logout();
 		break;
+	case "/postmanage":
+		$factory->getFileController()->listPost();
+		break;
 	default:
 		$matches = [];
 		if(preg_match("|^/hello/(.+)$|", $_SERVER["REQUEST_URI"], $matches)) {

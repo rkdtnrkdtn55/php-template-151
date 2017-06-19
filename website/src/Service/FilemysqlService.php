@@ -39,6 +39,17 @@ class FilemysqlService
 		return $id;
 	}
 	
+	public function list()
+	{
+		$obj = new \stdClass();
+		$obj->ID = 1;
+		$obj->Description ="Hell yeah";
+		return [
+			$obj,
+			$obj,
+		];
+	}
+	
 	public function loadPost($id) {
 		
 		$stmt = $this->pdo->prepare("SELECT * FROM File WHERE id=?");
